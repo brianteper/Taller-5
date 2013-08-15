@@ -1,5 +1,5 @@
 package ar.edu.ort.t5.ejemplo;
 
 public abstract class Saludo {
-	public abstract void saludar();
+	public abstract void Saludar();
 }
