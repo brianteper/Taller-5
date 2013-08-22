@@ -100,6 +100,12 @@ public final class StrUtil {
 	// Retorna un valor Booleano indicando si el String s es capicúa
 	// =============================================================
 	public static boolean isPalindrome(String s) {
+		// Utilizando método reverse para comprar
+		//String reverse = reverse(s);
+		//int result = s.compareTo(reverse);
+		//return result == 0;
+		
+		// Comparando "manualmente"
 		boolean palindrome = false;
 		
 		if (s.length() > 0) {
