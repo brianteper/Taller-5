@@ -29,7 +29,7 @@ public final class StrUtil {
 	// Retorna el caracter ch convertido a minúsculas
 	// =============================================================
 	public static char toLowerCase(char ch) {
-		if (isLowerCase(ch)) {
+		if (!isLowerCase(ch)) {
             ch += 32;
 		}
 
@@ -40,7 +40,7 @@ public final class StrUtil {
 	// Retorna el caracter ch convertido a mayúsculas
 	// =============================================================
 	public static char toUpperCase(char ch) {
-		if (isUpperCase(ch)) {
+		if (!isUpperCase(ch)) {
             ch -= 32;
 		}
 
@@ -106,18 +106,19 @@ public final class StrUtil {
 		//return result == 0;
 		
 		// Comparando "manualmente"
-		boolean palindrome = false;
+		boolean palindrome = true;
 		
 		if (s.length() > 0) {
 			int inc = 0;
 			int des = s.length() - 1;		
 
-			while ((inc < des) && (!palindrome)) {
+			while ((inc < des) && (palindrome)) {
 				if (s.charAt(inc) == s.charAt(des)) {
 					inc++;
 					des--;
 				} else {
-					palindrome = true;
+					palindrome = false;
+					break;
 				}
 			}
 		} else {
@@ -254,46 +255,30 @@ public final class StrUtil {
 	public static double calculate(String[] args) {
 		double resultado = 0.0;
         int i = 0;
+        String op = "";
         
         while (i < args.length) {
-        	switch (args[i]) {
-			case "+":
-				i++;
-                resultado += new Double(args[i]);
-				break;
-			case "-":
-				i++;
-                resultado -= new Double(args[i]);
-                break;
-			case "/":
-                i++;
-                
-                if (!isNumber(args[i])) {
-                    String signo = args[i];
-                    i++;
-
-                    resultado /= new Double(signo + args[i]);
-                } else {
-                	resultado /= new Double(args[i]);
-                }
-                
-                break;
-			case "*":
-				i++;
-                if (!isNumber(args[i])) {
-                    String signo = args[i];
-                    i++;
-                    resultado *= new Double(signo + args[i]);
-                } else {
-                	resultado *= new Double(args[i]);
-                }
-                
-                break;
-
-			default:
-				resultado += new Double(args[i + 1]);
-				break;
-			}
+        	if (!isNumber((args[i]))) {
+        		op = args[i];
+        	} else {
+	        	switch (op) {
+				case "+":
+	                resultado += new Double(args[i]);
+					break;
+				case "-":
+	                resultado -= new Double(args[i]);
+	                break;
+				case "/":
+	                resultado /= new Double(args[i]);
+	                break;
+				case "*":
+	                resultado *= new Double(args[i]);
+	                break;
+				default:
+					resultado += new Double(args[i]);
+					break;
+				}
+        	}
 
             i++;
         }
