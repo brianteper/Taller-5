@@ -1,0 +1,3 @@
+Primera Vez: 12.0
+ar.edu.ort.t5.tp2.Suma: 46.0
+ar.edu.ort.t5.tp2.Resta: 41.0

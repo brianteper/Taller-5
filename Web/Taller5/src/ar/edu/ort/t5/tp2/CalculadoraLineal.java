@@ -1,23 +1,36 @@
 package ar.edu.ort.t5.tp2;
 
-public class CalculadoraLineal {
+import java.util.Observable;
+
+public final class CalculadoraLineal extends Observable {
 	private double total;
-	private String signo;
+	private Operacion operacion;
 	
-	public void limpiar(){
+	public void limpiar() {
 		total = 0;
-		signo = null;
+		operacion = null;
+		setChanged();
+		notifyObservers("Limpiar");
 	}
 	
-	public double getTotal(){
+	public double getTotal() {
 		return total;
 	}
 	
-	public void agregarNumero(double numero){
-		
+	public void agregarNumero(double valor) {
+		String what = "Primera Vez";
+		if (operacion == null)
+			total = valor;
+		else{
+			total = operacion.calcular(total, valor);
+			what = operacion.getClass().getName();
+			}
+		setChanged();
+		notifyObservers(what);
 	}
 	
-	public void agregarOperacion(String signo){
-		
+	public void agregarOperacion(String signo) {
+		operacion = FabricaOperaciones.getInstance().crearOperacion(signo);
 	}
+	
 }
