@@ -24,9 +24,10 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
     }
     public static final class id {
+        public static final int Button01=0x7f080014;
         public static final int GridLayout1=0x7f080003;
         public static final int LinearLayout1=0x7f080000;
-        public static final int action_settings=0x7f080014;
+        public static final int action_settings=0x7f080015;
         public static final int btnFnClear=0x7f080002;
         public static final int btnNum0=0x7f080010;
         public static final int btnNum1=0x7f08000c;

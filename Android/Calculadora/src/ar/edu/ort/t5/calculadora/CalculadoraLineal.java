@@ -34,13 +34,11 @@ public final class CalculadoraLineal extends Observable {
 		else{
 			setTotal(operacion.calcular(total, valor));
 		}
-		
-		setChanged();
-		notifyObservers();
 	}
 
 	private void setTotal(double valor) {
 		total = valor;
+		operacion = null;
 		
 		setChanged();
 		notifyObservers();

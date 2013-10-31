@@ -70,3 +70,13 @@ local.properties
 # PDT-specific
 .buildpath
 *.apk
+
+*.apk
+
+*.apk
+
+*.dex
+
+*.properties
+
+*.ap_

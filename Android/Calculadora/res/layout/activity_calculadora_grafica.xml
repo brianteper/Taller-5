@@ -200,5 +200,16 @@
                 android:layout_row="4"
                 android:onClick="calcOperacionSum"
                 android:text="+" />
+
+            <Button
+                android:id="@+id/Button01"
+                style="?android:attr/button"
+                android:layout_width="80dp"
+                android:layout_column="4"
+                android:layout_gravity="center_horizontal|top"
+                android:layout_row="7"
+                android:onClick="calcOperacionPow"
+                android:text="^" />
+
         </GridLayout>
 </LinearLayout>

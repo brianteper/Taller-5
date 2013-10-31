@@ -12,8 +12,8 @@ import android.view.View;
 import android.widget.EditText;
 
 public class CalculadoraGrafica extends Activity implements Observer {
-	private String valor = "";
-	private boolean start = false;
+	private String valor = "0";
+	private boolean start = true;
 	private CalculadoraController controller;
 	
     @Override
@@ -35,29 +35,33 @@ public class CalculadoraGrafica extends Activity implements Observer {
     public void calcFunctionClear(View v){
     	controller.limpiar();
     	
-    	valor = "";
-    	start = false;
+    	valor = "0";
+    	start = true;
     }
     
     public void calcOperacionEqu(View v){
     	controller.agregarNumero(Double.valueOf(valor));
     
-    	controller.getTotal();
-    
     	start = true;
-    	valor = "";
+    	valor = "0";
     }
     
     private void addValor(String val) {
     	if (start){
     		valor = "";
+    		start = false;
     	}
     	
     	valor += val;
+		
+		EditText text = (EditText) findViewById(R.id.editTotal);
+    	text.setText(valor);
 	}
     
     public void calcNumero0(View v){
-    	addValor("0");
+    	if (!valor.equals("0")){
+    		addValor("0");
+    	}
     }
     
     public void calcNumero1(View v){
@@ -97,17 +101,18 @@ public class CalculadoraGrafica extends Activity implements Observer {
     }
     
     public void calcNumeroDot(View v){
-    	addValor(".");
+    	if (!valor.contains(".")){
+    		addValor(".");
+    	}
     }
     
     private void addOperacion(String oper) {
-    	if (!start && valor != ""){   	
+    	if (!start && !valor.equals("0")){   	
     		controller.agregarNumero(Double.valueOf(valor));
         	controller.agregarOperacion(oper);
         	start = true;
     	}else{
     		controller.agregarOperacion(oper);
-    		start = false;
     	}
 	}
     
@@ -126,11 +131,14 @@ public class CalculadoraGrafica extends Activity implements Observer {
     public void calcOperacionDiv(View v){
     	addOperacion("/");
     }
-
+    
+    public void calcOperacionPow(View v){
+    	addOperacion("^");
+    }
 
 	@Override
 	public void update(Observable arg0, Object arg1) {
-		NumberFormat nf = new DecimalFormat("##.###");
+		NumberFormat nf = new DecimalFormat("##.############");
 		double total = controller.getTotal();
 		
 		EditText text = (EditText) findViewById(R.id.editTotal);
