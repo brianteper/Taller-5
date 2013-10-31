@@ -21,7 +21,7 @@ public final class CalculadoraLineal extends Observable {
 		total = 0;
 		operacion = null;
 		setChanged();
-		notifyObservers("Limpiar");
+		notifyObservers();
 	}
 	
 	public double getTotal() {
@@ -29,15 +29,21 @@ public final class CalculadoraLineal extends Observable {
 	}
 	
 	public void agregarNumero(double valor) {
-		String what = "Primera Vez";
 		if (operacion == null)
-			total = valor;
+			setTotal(valor);
 		else{
-			total = operacion.calcular(total, valor);
-			what = operacion.getClass().getName();
-			}
+			setTotal(operacion.calcular(total, valor));
+		}
+		
 		setChanged();
-		notifyObservers(what);
+		notifyObservers();
+	}
+
+	private void setTotal(double valor) {
+		total = valor;
+		
+		setChanged();
+		notifyObservers();
 	}
 	
 	public void agregarOperacion(String signo) {
