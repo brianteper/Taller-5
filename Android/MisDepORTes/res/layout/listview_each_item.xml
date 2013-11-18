@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="ar.com.ort.deportes.layout.ListviewActivity" >
+
+    <TextView
+        android:id="@+id/textViewActividad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="2dp"
+        android:text="TextView"
+        android:textColor="#0000FF"
+        android:textSize="23dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textViewFecha"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="TextView"
+        android:textColor="#5C002E"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/TextViewDistancia"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="TextView"
+        android:textColor="#5C002E"
+        android:textSize="17dp" />
+    
+    <TextView
+        android:id="@+id/TextViewTiempo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="TextView"
+        android:textColor="#5C002E"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/TextViewVelocidad"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="TextView"
+        android:textColor="#5C002E"
+        android:textSize="17dp" />
+    
+    <TextView
+        android:id="@+id/TextViewComentarios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingLeft="5dp"
+        android:text="TextView"
+        android:textColor="#5C002E"
+        android:textSize="17dp" />
+
+    <TextView
+        android:id="@+id/textIdSession"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="id"
+        android:visibility="invisible" />
+
+</LinearLayout>

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">depORTes</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="Actividad">Actividad</string>
+    <string name="Tiempo">Tiempo</string>
+    <string name="Distancia">Distancia</string>
+    <string name="Velocidad">Velocidad</string>
+    <string name="Fecha">Fecha</string>
+    <string name="Comentarios">Comentarios</string>
+    <string name="Actualizar">Actualizar</string>
+
+</resources>
