@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="#D1FFFF"
     android:orientation="vertical"
-    tools:context="ar.com.ort.deportes.layout.ListviewActivity" >
+    tools:context="ar.edu.ort.t5.misdeportes.layout.ListviewActivity" >
 
     <ListView
         android:id="@+id/listViewSMS"

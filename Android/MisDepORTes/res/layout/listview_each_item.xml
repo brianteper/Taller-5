@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context="ar.com.ort.deportes.layout.ListviewActivity" >
+    tools:context="ar.edu.ort.t5.misdeportes.layout.ListviewActivity" >
 
     <TextView
         android:id="@+id/textViewActividad"

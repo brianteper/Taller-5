@@ -6,100 +6,123 @@
     android:orientation="vertical"
     tools:context=".ActionActivity" >
 
-    <TextView
-        android:id="@+id/textIdToEdit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="TextView"
-        android:visibility="invisible" />
-
-    <TextView
-        android:id="@+id/TextView05"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Actividad" />
-
-    <Spinner
-        android:id="@+id/spinnerActividad"
-        android:layout_width="215dp"
-        android:layout_height="wrap_content" />
-
-    <TextView
-        android:id="@+id/TextView04"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Tiempo" />
-
-    <EditText
-        android:id="@+id/EditTextTiempo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/TextView03"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Distancia" />
-
-    <EditText
-        android:id="@+id/EditTextDistancia"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/TextView02"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Velocidad" />
-
-    <EditText
-        android:id="@+id/EditTexVelocidad"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10" />
-
-    <TextView
-        android:id="@+id/TextView01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Fecha" />
-
-    <EditText
-        android:id="@+id/editTextFecha"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="date"
-        android:onClick="changeDate" />
-
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/Comentarios" />
-
-    <EditText
-        android:id="@+id/editTextComentarios"
-        android:layout_width="492dp"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:inputType="textMultiLine" >
-    </EditText>
-
-    <Button
-        android:id="@+id/buttonActualizar"
+    <ScrollView
+        android:id="@+id/scrollView1"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="actualizarSession"
-        android:text="@string/Actualizar" />
+        android:layout_height="wrap_content" >
 
-    <Button
-        android:id="@+id/buttonCrear"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:onClick="crearSession"
-        android:text="Button" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical" >
+            
+            <TextView
+		        android:id="@+id/textIdToEdit"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="TextView"
+		        android:visibility="invisible" />
 
+		    <TextView
+		        android:id="@+id/TextView05"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/Actividad" />
+		
+		    <Spinner
+		        android:id="@+id/spinnerActividad"
+		        android:layout_width="215dp"
+		        android:layout_height="wrap_content" />
+		
+		    <TextView
+		        android:id="@+id/TextView04"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/Tiempo" />
+		
+		    <EditText
+		        android:id="@+id/EditTextTiempo"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:ems="10" />
+		
+		    <TextView
+		        android:id="@+id/TextView03"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/Distancia" />
+		
+		    <EditText
+		        android:id="@+id/EditTextDistancia"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:ems="10" />
+		
+		    <TextView
+		        android:id="@+id/TextView02"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/Velocidad" />
+		
+		    <EditText
+		        android:id="@+id/EditTexVelocidad"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:ems="10" />
+		
+		    <TextView
+		        android:id="@+id/TextView01"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/Fecha" />
+		
+		    <EditText
+		        android:id="@+id/editTextFecha"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:layout_gravity="left"
+		        android:clickable="false"
+		        android:ems="10"
+		        android:focusable="false"
+		        android:focusableInTouchMode="false"
+		        android:inputType="date" />
+		
+		    <Button
+		        android:id="@+id/buttonCambiarFecha"
+		        style="?android:attr/buttonStyleSmall"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:onClick="cambiarFecha"
+		        android:text="@string/Cambiar" />
+		
+		    <TextView
+		        android:id="@+id/textView1"
+		        android:layout_width="wrap_content"
+		        android:layout_height="wrap_content"
+		        android:text="@string/Comentarios" />
+		
+		    <EditText
+		        android:id="@+id/editTextComentarios"
+		        android:layout_width="492dp"
+		        android:layout_height="wrap_content"
+		        android:ems="10"
+		        android:inputType="textMultiLine" >
+		    </EditText>
+		
+		    <Button
+		        android:id="@+id/buttonActualizar"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:onClick="actualizarSession"
+		        android:text="@string/Actualizar" />
+		
+		    <Button
+		        android:id="@+id/buttonCrear"
+		        android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:onClick="crearSession"
+		        android:text="Button" />
+            
+        </LinearLayout>
+    </ScrollView>
 </LinearLayout>

@@ -35,24 +35,22 @@ public class MainActivity extends Activity {
 		setContentView(R.layout.activity_main);
 		context =this;
 		String[] a = this.databaseList();
+		
 		for (int i=0; i<a.length; i++){
 			this.deleteDatabase(a[i]);			
 		}
 		
-		//comienza la carga de la base
 		dbhelper = new BaseDatosHelper(this);
 		
 		dbhelper.insertAllActividades();
 		dbhelper.insertAllSessiones();
-//		llenarListView(dbhelper.selectAllSessiones());
+
 		onResume();
 	}	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		
 		menu.add(Menu.NONE, 0, Menu.NONE, "Nueva Session");
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		
 		return true;
@@ -60,11 +58,8 @@ public class MainActivity extends Activity {
 	
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
-	    // Handle item selection
-					
 	    switch (item.getItemId()) {
 	        case 0:
-	        	//nueva session
 	        	Intent i = new Intent(context, ActionActivity.class);
 	        	i.putExtra("BOTON_NOMBRE", "Crear");
 	            startActivity(i);
@@ -77,8 +72,7 @@ public class MainActivity extends Activity {
 	
 	private void llenarListView( Cursor cursor){
 		ListView listView= (ListView) findViewById(R.id.listView);
-
-	    //lista de los campos a mostrar 
+ 
 	    String[] arrayColumns = new String[]{
 	    		 SessionRegistro.COLUMN_NAME_ID,
 	    		 SessionRegistro.COLUMN_NAME_ACTIVIDAD,
@@ -89,7 +83,6 @@ public class MainActivity extends Activity {
 	    		 SessionRegistro.COLUMN_NAME_VELOCIDAD
 	    		 };
 	     
-	    //en que texto muestro los campos
 	    int[] arrayViewIDs = new int[]{
 	    		 R.id.textIdSession,
 	    		 R.id.textViewActividad,
@@ -101,11 +94,9 @@ public class MainActivity extends Activity {
 	    		 };
 	     
 	     
-	    //llenar y setear el listView
 	    SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.listview_each_item, cursor, arrayColumns, arrayViewIDs,0);
 	    listView.setAdapter(adapter);
    
-	    // To handle the click on List View Item
 	    listView.setOnItemClickListener(new OnItemClickListener(){
            public void onItemClick(AdapterView<?> arg0, View v,int position, long arg3){
                final TextView id = (TextView)v.findViewById(R.id.textIdSession);
@@ -116,14 +107,12 @@ public class MainActivity extends Activity {
         	   final TextView textViewTiempo = (TextView)v.findViewById(R.id.TextViewTiempo);
         	   final TextView textViewVelocidad = (TextView)v.findViewById(R.id.TextViewVelocidad);
                
-               // Show The Dialog with Selected SMS
                AlertDialog dialog = new AlertDialog.Builder(context).create();
                dialog.setTitle("Accion");
                dialog.setIcon(android.R.drawable.ic_dialog_info);
                dialog.setMessage("Que desea hacer?");
                dialog.setButton(DialogInterface.BUTTON_POSITIVE, "ACTUALIZAR", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int which){
-                	   //llevarlo a un nuevo layout con los campos.                        
                 	   Intent i = new Intent(context, ActionActivity.class);
                 	   i.putExtra("ID", id.getText().toString());
                 	   i.putExtra("ACTIVIDAD", textViewAcvitidad.getText().toString());
@@ -137,16 +126,16 @@ public class MainActivity extends Activity {
                        startActivity(i);
                    }  
                });
+               
                dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "ELIMINAR", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int which){
-                	   //eliminarlo y dar mensame de ok/error
                 	   dbhelper.deleteSession(id.getText().toString());
                 	   motrarMensajeSessionEliminada();
                    }  
                });
+               
                dialog.show();
            }
-          
        });
 	}
 	
@@ -162,6 +151,7 @@ public class MainActivity extends Activity {
             	startActivity(i);
             };
         });
+        
         dialog.show();
 	}
 }

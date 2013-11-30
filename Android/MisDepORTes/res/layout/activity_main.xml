@@ -1,4 +1,4 @@
- <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -6,12 +6,12 @@
     android:orientation="vertical"
     tools:context="ar.edu.ort.t5.misdeportes.layout.MainActivity" >
     
-	 <ListView
-	      android:id="@+id/listView"
-	      android:layout_width="fill_parent"
-	      android:layout_height="fill_parent"
-	      android:divider="#0000CC"
-	      android:dividerHeight="0.1dp" >
-	  </ListView>
+   <ListView
+        android:id="@+id/listView"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:divider="#0000CC"
+        android:dividerHeight="0.1dp" >
+    </ListView>
 
- </LinearLayout>
+</LinearLayout>
