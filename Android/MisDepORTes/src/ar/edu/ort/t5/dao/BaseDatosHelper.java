@@ -65,7 +65,6 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
     public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
         onUpgrade(db, oldVersion, newVersion);
     }
-	
     
     public void insertAllActividades(){
     	insert("1","caminata");
@@ -74,21 +73,17 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
     }  
     
 	private void insert( String codigo, String desc){
-		// Gets the data repository in write mode
 		SQLiteDatabase db = this.getWritableDatabase();
 	
-		// Create a new map of values, where column names are the keys
 		ContentValues values = new ContentValues();
 		values.put(ActividadRegistro.COLUMN_NAME_CODIGO, codigo);
 		values.put(ActividadRegistro.COLUMN_NAME_DESCRIPCION, desc);
-		
 	
-		// Insert the new row, returning the primary key value of the new row
-		long newRowId;
-		newRowId = db.insert(
-				ActividadRegistro.TABLE_NAME,
-				ActividadRegistro.COLUMN_NAME_NULLABLE,
-		         values);	
+		db.insert(
+			ActividadRegistro.TABLE_NAME,
+			ActividadRegistro.COLUMN_NAME_NULLABLE,
+			values);
+		
 		 db.close(); 
 	}
 	
@@ -98,27 +93,31 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
 	    SQLiteDatabase db = this.getWritableDatabase();
 	    Cursor cursor = db.rawQuery(selectQuery, null);
 	    cursor.moveToFirst();
+	    
 	    return cursor;
 	}
 
 	public List<String> selectAllActividadesList(){
-		 List<String> actividades = new ArrayList<String>();
-		 Cursor cursor = selectAllActividades();
-		 if (cursor.moveToFirst()) {
-	            do {
-	            	actividades.add(cursor.getString(2));
-	            } while (cursor.moveToNext());
-	        }
+		List<String> actividades = new ArrayList<String>();
+		Cursor cursor = selectAllActividades();
 		 
-		 return actividades;
+		if (cursor.moveToFirst()) {
+	        do {
+	        	actividades.add(cursor.getString(2));
+	        } while (cursor.moveToNext());
+        }
+		 
+		return actividades;
 	}
 	
 	public int getActividadId(String actividad){
 		String selectQuery = "SELECT " + ActividadRegistro.COLUMN_NAME_CODIGO + " FROM " + ActividadRegistro.TABLE_NAME
 					+ " WHERE " + ActividadRegistro.COLUMN_NAME_DESCRIPCION + "=\"" + actividad + "\"";
+		
 		SQLiteDatabase db = this.getWritableDatabase();
 		Cursor cursor = db.rawQuery(selectQuery, null);
 		cursor.moveToFirst();
+		
 		return cursor.getInt(0);
 	}
 	
@@ -163,11 +162,11 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
 	public void insertSession( ContentValues values ){
 		SQLiteDatabase db = this.getWritableDatabase();
 	
-		long newRowId;
-		newRowId = db.insert(
-				SessionRegistro.TABLE_NAME,
-				SessionRegistro.COLUMN_NAME_NULLABLE,
-		         values);	
+		db.insert(
+			SessionRegistro.TABLE_NAME,
+			SessionRegistro.COLUMN_NAME_NULLABLE,
+			values);
+		
 		 db.close(); 
 	}
 	
@@ -186,7 +185,7 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
 	String selection = SessionRegistro.COLUMN_NAME_ID + " LIKE ?";
 	String[] selectionArgs = { id };
 
-	int count = db.update(
+	db.update(
 	    SessionContract.SessionRegistro.TABLE_NAME,
 	    values,
 	    selection,

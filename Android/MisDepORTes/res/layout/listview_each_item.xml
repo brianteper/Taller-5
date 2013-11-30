@@ -11,9 +11,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="2dp"
-        android:text="TextView"
+        android:text=""
         android:textColor="#0000FF"
-        android:textSize="23dp"
+        android:textSize="23sp"
         android:textStyle="bold" />
 
     <TextView
@@ -21,51 +21,51 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
-        android:text="TextView"
+        android:text=""
         android:textColor="#5C002E"
-        android:textSize="17dp" />
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/TextViewDistancia"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
-        android:text="TextView"
+        android:text=""
         android:textColor="#5C002E"
-        android:textSize="17dp" />
+        android:textSize="17sp" />
     
     <TextView
         android:id="@+id/TextViewTiempo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
-        android:text="TextView"
+        android:text=""
         android:textColor="#5C002E"
-        android:textSize="17dp" />
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/TextViewVelocidad"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
-        android:text="TextView"
+        android:text=""
         android:textColor="#5C002E"
-        android:textSize="17dp" />
+        android:textSize="17sp" />
     
     <TextView
         android:id="@+id/TextViewComentarios"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:paddingLeft="5dp"
-        android:text="TextView"
+        android:text=""
         android:textColor="#5C002E"
-        android:textSize="17dp" />
+        android:textSize="17sp" />
 
     <TextView
         android:id="@+id/textIdSession"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="id"
+        android:text=""
         android:visibility="invisible" />
 
 </LinearLayout>
