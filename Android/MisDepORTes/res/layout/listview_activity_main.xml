@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#D1FFFF"
+    android:background="#595954"
     android:orientation="vertical"
     tools:context="ar.edu.ort.t5.misdeportes.layout.ListviewActivity" >
 
@@ -11,7 +11,7 @@
         android:id="@+id/listViewSMS"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:divider="#0000CC"
+        android:divider="#FFFFFF"
         android:dividerHeight="0.1dp" >
     </ListView>
 

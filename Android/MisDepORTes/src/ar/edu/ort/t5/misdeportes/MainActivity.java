@@ -70,7 +70,7 @@ public class MainActivity extends Activity {
 	    }
 	}
 	
-	private void llenarListView( Cursor cursor){
+	private void llenarListView(Cursor cursor){
 		ListView listView= (ListView) findViewById(R.id.listView);
  
 	    String[] arrayColumns = new String[]{
@@ -84,7 +84,7 @@ public class MainActivity extends Activity {
 	    };
 	     
 	    int[] arrayViewIDs = new int[]{
-	    		R.id.textIdSession,
+	    		R.id.textIdSesion,
 	    		R.id.textViewActividad,
 	    		R.id.TextViewComentarios,
 	    		R.id.TextViewDistancia,
@@ -99,7 +99,7 @@ public class MainActivity extends Activity {
    
 	    listView.setOnItemClickListener(new OnItemClickListener(){
            public void onItemClick(AdapterView<?> arg0, View v,int position, long arg3){
-               final TextView id = (TextView)v.findViewById(R.id.textIdSession);
+               final TextView id = (TextView)v.findViewById(R.id.textIdSesion);
         	   final TextView textViewAcvitidad = (TextView)v.findViewById(R.id.textViewActividad);
         	   final TextView textViewFecha = (TextView)v.findViewById(R.id.textViewFecha);
         	   final TextView textViewComentarios = (TextView)v.findViewById(R.id.TextViewComentarios);

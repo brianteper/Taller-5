@@ -33,19 +33,19 @@ public class ActionActivity extends Activity {
 		llenarListaActividades();
 		
 		TextView txtId= (TextView) findViewById(R.id.textIdToEdit);
-		txtId.setText( getIntent().getStringExtra("ID"));
+		txtId.setText(getIntent().getStringExtra("ID"));
 				
 		TextView txtComentarios= (TextView) findViewById(R.id.editTextComentarios);
-		txtComentarios.setText( getIntent().getStringExtra("COMENTARIOS"));
+		txtComentarios.setText(getIntent().getStringExtra("COMENTARIOS"));
 		TextView txtDistancia= (TextView) findViewById(R.id.EditTextDistancia);
-		txtDistancia.setText( getIntent().getStringExtra("DISTANCIA"));
+		txtDistancia.setText(getIntent().getStringExtra("DISTANCIA"));
 		TextView txtFecha= (TextView) findViewById(R.id.editTextFecha);
-		txtFecha.setText( getIntent().getStringExtra("FECHA"));
+		txtFecha.setText(getIntent().getStringExtra("FECHA"));
 		
 		TextView txtTiempo= (TextView) findViewById(R.id.EditTextTiempo);
-		txtTiempo.setText( getIntent().getStringExtra("TIEMPO"));
+		txtTiempo.setText(getIntent().getStringExtra("TIEMPO"));
 		TextView txtVelo= (TextView) findViewById(R.id.EditTexVelocidad);
-		txtVelo.setText( getIntent().getStringExtra("VELOCIDAD"));
+		txtVelo.setText(getIntent().getStringExtra("VELOCIDAD"));
 		
 		if (getIntent().getStringExtra("BOTON_NOMBRE") != null){
 			Button botonActualizar = (Button) findViewById(R.id.buttonActualizar);
@@ -76,7 +76,7 @@ public class ActionActivity extends Activity {
 		spinner.setSelection(dbhelper.getActividadId(actividad)-1);
 	}
 	
-	public void actualizarSession( View v ){
+	public void actualizarSesion( View v ){
 		TextView id = (TextView) findViewById(R.id.textIdToEdit);
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerActividad);
 		TextView txtFecha = (TextView) findViewById(R.id.editTextFecha);
@@ -98,8 +98,8 @@ public class ActionActivity extends Activity {
 		dbhelper.updateSesion(id.getText().toString(), values );
 				
 		AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle("Accion");
-        dialog.setMessage("Session Actualizada Correctamente!!");
+        dialog.setTitle("Alerta");
+        dialog.setMessage("Se ha actualizado la sesión correctamente!");
         dialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Aceptar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which){
             	Intent i = new Intent(context, MainActivity.class);
@@ -112,7 +112,7 @@ public class ActionActivity extends Activity {
         dialog.show();
 	}
 	
-	public void crearSession( View v){
+	public void crearSesion(View v){
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerActividad);
 		TextView txtFecha = (TextView) findViewById(R.id.editTextFecha);
 		TextView txtDistancia = (TextView) findViewById(R.id.EditTextDistancia);
@@ -130,11 +130,11 @@ public class ActionActivity extends Activity {
 		values.put(SesionRegistro.COLUMN_NAME_TIEMPO, txtTiempo.getText().toString());
 		values.put(SesionRegistro.COLUMN_NAME_VELOCIDAD, txtVelo.getText().toString());
 		
-		dbhelper.insertSesion( values );
+		dbhelper.insertSesion(values);
 				
 		AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle("Accion");
-        dialog.setMessage("Session Creada Correctamente!!");
+        dialog.setTitle("Alerta");
+        dialog.setMessage("Se ha creado la sesión correctamente!");
         dialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Aceptar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which){
             	Intent i = new Intent(context, MainActivity.class);

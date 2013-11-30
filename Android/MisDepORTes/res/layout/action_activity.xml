@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/scrollView1"
     android:layout_width="match_parent"
+    android:background="#595954"
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".ActionActivity" >
@@ -17,12 +18,14 @@
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
 	      android:text=""
+	      android:textColor="#FFFFFF"
 	      android:visibility="invisible" />
 		
 	  	<TextView
 	      android:id="@+id/TextView05"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:text="@string/Actividad" />
 		
 	  	<Spinner
@@ -34,12 +37,14 @@
 	      android:id="@+id/TextView04"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:text="@string/Tiempo" />
 		
 	  	<EditText
 	      android:id="@+id/EditTextTiempo"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:hint=""
 	      android:ems="10" />
 		
@@ -47,12 +52,14 @@
 	      android:id="@+id/TextView03"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:text="@string/Distancia" />
 		
 	 	<EditText
 	      android:id="@+id/EditTextDistancia"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:hint=""
 	      android:ems="10" />
 	
@@ -60,12 +67,14 @@
 	      android:id="@+id/TextView02"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:text="@string/Velocidad" />
 		
 	  	<EditText
 	      android:id="@+id/EditTexVelocidad"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:hint=""
 	      android:ems="10" />
 		
@@ -73,6 +82,7 @@
 	      android:id="@+id/TextView01"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:text="@string/Fecha" />
 		
 	  	<EditText
@@ -86,20 +96,14 @@
 	  	    android:focusableInTouchMode="false"
 	  	    android:hint=""
 	  	    android:inputType="date"
+	  	    android:textColor="#FFFFFF"
 	  	    android:onClick="cambiarFecha" />
-
-	  	<Button
-	  	    android:id="@+id/buttonCambiarFecha"
-	  	    style="?android:attr/buttonStyleSmall"
-	  	    android:layout_width="wrap_content"
-	  	    android:layout_height="wrap_content"
-	  	    android:onClick="cambiarFecha"
-	  	    android:text="@string/Cambiar" />
 		
 	  	<TextView
 	      android:id="@+id/textView1"
 	      android:layout_width="wrap_content"
 	      android:layout_height="wrap_content"
+	      android:textColor="#FFFFFF"
 	      android:text="@string/Comentarios" />
 		
 	  	<EditText
@@ -108,6 +112,7 @@
 	      android:layout_height="wrap_content"
 	      android:hint=""
 	      android:ems="10"
+	      android:textColor="#FFFFFF"
 	      android:inputType="textMultiLine" />
 		
 	  	<Button
@@ -115,6 +120,7 @@
 	      android:layout_width="match_parent"
 	      android:layout_height="wrap_content"
 	      android:onClick="actualizarSession"
+	      android:textColor="#FFFFFF"
 	      android:text="@string/Actualizar" />
 		
 	  	<Button
@@ -122,6 +128,7 @@
 	      android:layout_width="match_parent"
 	      android:layout_height="wrap_content"
 	      android:onClick="crearSession"
+	      android:textColor="#FFFFFF"
 	      android:text="" />
 		        
     </LinearLayout>
