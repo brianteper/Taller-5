@@ -15,18 +15,18 @@ import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListView;
 import android.widget.TextView;
-import ar.edu.ort.t5.dao.BaseDatosHelper;
-import ar.edu.ort.t5.dao.SessionContract.SessionRegistro;
+import ar.edu.ort.t5.basededatos.BaseDeDatos;
+import ar.edu.ort.t5.basededatos.Sesion.SesionRegistro;
 
 public class MainActivity extends Activity {
 
 	Context context;
-	private BaseDatosHelper dbhelper = null;
+	private BaseDeDatos db = null;
 	
 	@Override
 	protected void onResume(){
 		super.onResume();
-		llenarListView(dbhelper.selectAllSessiones());		
+		llenarListView(db.selectAllSesiones());		
 	}
 
 	@Override
@@ -40,17 +40,17 @@ public class MainActivity extends Activity {
 			this.deleteDatabase(a[i]);			
 		}
 		
-		dbhelper = new BaseDatosHelper(this);
+		db = new BaseDeDatos(this);
 		
-		dbhelper.insertAllActividades();
-		dbhelper.insertAllSessiones();
+		db.insertAllActividades();
+		db.insertAllSesiones();
 
 		onResume();
 	}	
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		menu.add(Menu.NONE, 0, Menu.NONE, "Nueva Session");
+		menu.add(Menu.NONE, 0, Menu.NONE, "Añadir Sesion");
 		getMenuInflater().inflate(R.menu.main, menu);
 		
 		return true;
@@ -74,24 +74,24 @@ public class MainActivity extends Activity {
 		ListView listView= (ListView) findViewById(R.id.listView);
  
 	    String[] arrayColumns = new String[]{
-	    		 SessionRegistro.COLUMN_NAME_ID,
-	    		 SessionRegistro.COLUMN_NAME_ACTIVIDAD,
-	    		 SessionRegistro.COLUMN_NAME_COMENTARIOS,
-	    		 SessionRegistro.COLUMN_NAME_DISTANCIA,
-	    		 SessionRegistro.COLUMN_NAME_FECHA,
-	    		 SessionRegistro.COLUMN_NAME_TIEMPO,
-	    		 SessionRegistro.COLUMN_NAME_VELOCIDAD
-	    		 };
+    		SesionRegistro.COLUMN_NAME_ID,
+    		SesionRegistro.COLUMN_NAME_ACTIVIDAD,
+    		SesionRegistro.COLUMN_NAME_COMENTARIOS,
+    		SesionRegistro.COLUMN_NAME_DISTANCIA,
+    		SesionRegistro.COLUMN_NAME_FECHA,
+    		SesionRegistro.COLUMN_NAME_TIEMPO,
+    		SesionRegistro.COLUMN_NAME_VELOCIDAD
+	    };
 	     
 	    int[] arrayViewIDs = new int[]{
-	    		 R.id.textIdSession,
-	    		 R.id.textViewActividad,
-	    		 R.id.TextViewComentarios,
-	    		 R.id.TextViewDistancia,
-	    		 R.id.textViewFecha,
-	    		 R.id.TextViewTiempo,
-	    		 R.id.TextViewVelocidad
-	    		 };
+	    		R.id.textIdSession,
+	    		R.id.textViewActividad,
+	    		R.id.TextViewComentarios,
+	    		R.id.TextViewDistancia,
+	    		R.id.textViewFecha,
+	    		R.id.TextViewTiempo,
+	    		R.id.TextViewVelocidad
+		};
 	     
 	     
 	    SimpleCursorAdapter adapter = new SimpleCursorAdapter(this, R.layout.listview_each_item, cursor, arrayColumns, arrayViewIDs,0);
@@ -108,10 +108,10 @@ public class MainActivity extends Activity {
         	   final TextView textViewVelocidad = (TextView)v.findViewById(R.id.TextViewVelocidad);
                
                AlertDialog dialog = new AlertDialog.Builder(context).create();
-               dialog.setTitle("Accion");
+               dialog.setTitle("Opciones");
                dialog.setIcon(android.R.drawable.ic_dialog_info);
-               dialog.setMessage("Que desea hacer?");
-               dialog.setButton(DialogInterface.BUTTON_POSITIVE, "ACTUALIZAR", new DialogInterface.OnClickListener() {
+               dialog.setMessage("Elija una de las siguientes opciones:");
+               dialog.setButton(DialogInterface.BUTTON_POSITIVE, "Actualizar", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int which){
                 	   Intent i = new Intent(context, ActionActivity.class);
                 	   i.putExtra("ID", id.getText().toString());
@@ -127,10 +127,10 @@ public class MainActivity extends Activity {
                    }  
                });
                
-               dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "ELIMINAR", new DialogInterface.OnClickListener() {
+               dialog.setButton(DialogInterface.BUTTON_NEGATIVE, "Eliminar", new DialogInterface.OnClickListener() {
                    public void onClick(DialogInterface dialog, int which){
-                	   dbhelper.deleteSession(id.getText().toString());
-                	   motrarMensajeSessionEliminada();
+                	   db.deleteSesion(id.getText().toString());
+                	   motrarMensajeSesionEliminada();
                    }  
                });
                
@@ -139,14 +139,14 @@ public class MainActivity extends Activity {
        });
 	}
 	
-	private void motrarMensajeSessionEliminada(){
+	private void motrarMensajeSesionEliminada(){
 		AlertDialog dialog = new AlertDialog.Builder(context).create();
-        dialog.setTitle("Accion");
-        dialog.setMessage("Session Eliminada Correctamente!!");
+        dialog.setTitle("Alerta");
+        dialog.setMessage("Se ha eliminado la sesión seleccionada.");
         dialog.setButton(DialogInterface.BUTTON_NEUTRAL, "Aceptar", new DialogInterface.OnClickListener() {
             public void onClick(DialogInterface dialog, int which){
             	Intent i = new Intent(context, MainActivity.class);
-         	   i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
+            	i.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP|Intent.FLAG_ACTIVITY_SINGLE_TOP);
 
             	startActivity(i);
             };

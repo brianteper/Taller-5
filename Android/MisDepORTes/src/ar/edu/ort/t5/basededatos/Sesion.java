@@ -1,17 +1,17 @@
-package ar.edu.ort.t5.dao;
+package ar.edu.ort.t5.basededatos;
 
 import android.provider.BaseColumns;
 
 
 //b) Tabla Sesiones (Fecha, Actividad, Distancia, Tiempo, Velocidad, Comentarios)
 
-public class SessionContract {
+public class Sesion {
 	
-	public SessionContract(){
+	public Sesion(){
 		
 	}
 	
-	public static abstract class SessionRegistro implements BaseColumns {
+	public static abstract class SesionRegistro implements BaseColumns {
 		public static final String TABLE_NAME = "Session";
 		public static final String COLUMN_NAME_ID = "_id";
 		public static final String COLUMN_NAME_FECHA = "fecha";

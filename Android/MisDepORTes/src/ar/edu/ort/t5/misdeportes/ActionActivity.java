@@ -18,8 +18,8 @@ import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.Spinner;
 import android.widget.TextView;
-import ar.edu.ort.t5.dao.BaseDatosHelper;
-import ar.edu.ort.t5.dao.SessionContract.SessionRegistro;
+import ar.edu.ort.t5.basededatos.BaseDeDatos;
+import ar.edu.ort.t5.basededatos.Sesion.SesionRegistro;
 
 public class ActionActivity extends Activity {
 	
@@ -61,7 +61,7 @@ public class ActionActivity extends Activity {
 	}
 	
 	public void llenarListaActividades(){
-		BaseDatosHelper dbhelper = new BaseDatosHelper(this);
+		BaseDeDatos dbhelper = new BaseDeDatos(this);
 				
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerActividad);
         List<String> lables = dbhelper.selectAllActividadesList();
@@ -72,7 +72,7 @@ public class ActionActivity extends Activity {
 	
 	private void setActividadInSpinner(String actividad){
 		Spinner spinner = (Spinner) findViewById(R.id.spinnerActividad);
-		BaseDatosHelper dbhelper = new BaseDatosHelper(this);
+		BaseDeDatos dbhelper = new BaseDeDatos(this);
 		spinner.setSelection(dbhelper.getActividadId(actividad)-1);
 	}
 	
@@ -85,17 +85,17 @@ public class ActionActivity extends Activity {
 		TextView txtVelo= (TextView) findViewById(R.id.EditTexVelocidad);
 		TextView txtComentarios = (TextView) findViewById(R.id.editTextComentarios);
 		
-		BaseDatosHelper dbhelper = new BaseDatosHelper(this);
+		BaseDeDatos dbhelper = new BaseDeDatos(this);
 		
 		ContentValues values = new ContentValues();
-		values.put(SessionRegistro.COLUMN_NAME_ACTIVIDAD,  spinner.getSelectedItem().toString());
-		values.put(SessionRegistro.COLUMN_NAME_COMENTARIOS, txtComentarios.getText().toString());
-		values.put(SessionRegistro.COLUMN_NAME_DISTANCIA, txtDistancia.getText().toString());
-		values.put(SessionRegistro.COLUMN_NAME_FECHA, txtFecha.getText().toString());
-		values.put(SessionRegistro.COLUMN_NAME_TIEMPO, txtTiempo.getText().toString());
-		values.put(SessionRegistro.COLUMN_NAME_VELOCIDAD, txtVelo.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_ACTIVIDAD,  spinner.getSelectedItem().toString());
+		values.put(SesionRegistro.COLUMN_NAME_COMENTARIOS, txtComentarios.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_DISTANCIA, txtDistancia.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_FECHA, txtFecha.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_TIEMPO, txtTiempo.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_VELOCIDAD, txtVelo.getText().toString());
 		
-		dbhelper.updateSession(id.getText().toString(), values );
+		dbhelper.updateSesion(id.getText().toString(), values );
 				
 		AlertDialog dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle("Accion");
@@ -120,17 +120,17 @@ public class ActionActivity extends Activity {
 		TextView txtVelo= (TextView) findViewById(R.id.EditTexVelocidad);
 		TextView txtComentarios = (TextView) findViewById(R.id.editTextComentarios);
 		
-		BaseDatosHelper dbhelper = new BaseDatosHelper(this);
+		BaseDeDatos dbhelper = new BaseDeDatos(this);
 		
 		ContentValues values = new ContentValues();
-		values.put(SessionRegistro.COLUMN_NAME_ACTIVIDAD,  spinner.getSelectedItem().toString());
-		values.put(SessionRegistro.COLUMN_NAME_COMENTARIOS, txtComentarios.getText().toString());
-		values.put(SessionRegistro.COLUMN_NAME_DISTANCIA, txtDistancia.getText().toString());
-		values.put(SessionRegistro.COLUMN_NAME_FECHA, txtFecha.getText().toString());
-		values.put(SessionRegistro.COLUMN_NAME_TIEMPO, txtTiempo.getText().toString());
-		values.put(SessionRegistro.COLUMN_NAME_VELOCIDAD, txtVelo.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_ACTIVIDAD,  spinner.getSelectedItem().toString());
+		values.put(SesionRegistro.COLUMN_NAME_COMENTARIOS, txtComentarios.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_DISTANCIA, txtDistancia.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_FECHA, txtFecha.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_TIEMPO, txtTiempo.getText().toString());
+		values.put(SesionRegistro.COLUMN_NAME_VELOCIDAD, txtVelo.getText().toString());
 		
-		dbhelper.insertSession( values );
+		dbhelper.insertSesion( values );
 				
 		AlertDialog dialog = new AlertDialog.Builder(context).create();
         dialog.setTitle("Accion");

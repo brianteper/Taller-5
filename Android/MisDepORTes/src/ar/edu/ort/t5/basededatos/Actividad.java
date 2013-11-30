@@ -1,4 +1,4 @@
-package ar.edu.ort.t5.dao;
+package ar.edu.ort.t5.basededatos;
 
 import android.provider.BaseColumns;
 
@@ -7,9 +7,9 @@ import android.provider.BaseColumns;
 //2 - Correr
 //3 - Ciclismo
 
-public final class ActividadContract {
+public final class Actividad {
 	 
-	public ActividadContract(){
+	public Actividad(){
 		
 	}
 	

@@ -1,4 +1,4 @@
-package ar.edu.ort.t5.dao;
+package ar.edu.ort.t5.basededatos;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -8,13 +8,13 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import ar.edu.ort.t5.dao.ActividadContract.ActividadRegistro;
-import ar.edu.ort.t5.dao.SessionContract.SessionRegistro;
+import ar.edu.ort.t5.basededatos.Actividad.ActividadRegistro;
+import ar.edu.ort.t5.basededatos.Sesion.SesionRegistro;
 
-public class BaseDatosHelper  extends SQLiteOpenHelper {
+public class BaseDeDatos  extends SQLiteOpenHelper {
 
 	private static final int DATABASE_VERSION = 1;
-	private static final String DATABASE_NAME = "depORTes.db";
+	private static final String DATABASE_NAME = "deportes.db";
 
 	private static final String ID_TYPE = " integer primary key autoincrement";
 	private static final String TEXT_TYPE = " TEXT";
@@ -30,20 +30,20 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
 			"DROP TABLE IF EXISTS " + ActividadRegistro.TABLE_NAME;
 
 	private static final String SQL_CREATE_ENTRIES_SESSION =
-			"CREATE TABLE " + SessionRegistro.TABLE_NAME + " (" +
-					SessionRegistro.COLUMN_NAME_ID +  ID_TYPE + COMMA_SEP +
-					SessionRegistro.COLUMN_NAME_ACTIVIDAD + TEXT_TYPE + COMMA_SEP +
-					SessionRegistro.COLUMN_NAME_DISTANCIA + TEXT_TYPE + COMMA_SEP +
-					SessionRegistro.COLUMN_NAME_FECHA + TEXT_TYPE + COMMA_SEP +
-					SessionRegistro.COLUMN_NAME_TIEMPO + TEXT_TYPE + COMMA_SEP +
-					SessionRegistro.COLUMN_NAME_VELOCIDAD + TEXT_TYPE + COMMA_SEP +					
-					SessionRegistro.COLUMN_NAME_COMENTARIOS + TEXT_TYPE + " )";
+			"CREATE TABLE " + SesionRegistro.TABLE_NAME + " (" +
+					SesionRegistro.COLUMN_NAME_ID +  ID_TYPE + COMMA_SEP +
+					SesionRegistro.COLUMN_NAME_ACTIVIDAD + TEXT_TYPE + COMMA_SEP +
+					SesionRegistro.COLUMN_NAME_DISTANCIA + TEXT_TYPE + COMMA_SEP +
+					SesionRegistro.COLUMN_NAME_FECHA + TEXT_TYPE + COMMA_SEP +
+					SesionRegistro.COLUMN_NAME_TIEMPO + TEXT_TYPE + COMMA_SEP +
+					SesionRegistro.COLUMN_NAME_VELOCIDAD + TEXT_TYPE + COMMA_SEP +					
+					SesionRegistro.COLUMN_NAME_COMENTARIOS + TEXT_TYPE + " )";
 
 	private static final String SQL_DELETE_ENTRIES_SESSION =
-			"DROP TABLE IF EXISTS " + SessionRegistro.TABLE_NAME;
+			"DROP TABLE IF EXISTS " + SesionRegistro.TABLE_NAME;
 	
 	
-	public BaseDatosHelper(Context context) {
+	public BaseDeDatos(Context context) {
 		super(context, DATABASE_NAME, null, DATABASE_VERSION);
 		context.openOrCreateDatabase(DATABASE_NAME, DATABASE_VERSION, null);
 		
@@ -67,12 +67,12 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
     }
     
     public void insertAllActividades(){
-    	insert("1","caminata");
-    	insert("2","correr");
-    	insert("3","ciclismo");
+    	insert("1","Caminata");
+    	insert("2","Correr");
+    	insert("3","Ciclismo");
     }  
     
-	private void insert( String codigo, String desc){
+	private void insert(String codigo, String desc){
 		SQLiteDatabase db = this.getWritableDatabase();
 	
 		ContentValues values = new ContentValues();
@@ -121,57 +121,49 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
 		return cursor.getInt(0);
 	}
 	
-    public void insertAllSessiones(){
+    public void insertAllSesiones(){
 		ContentValues values = new ContentValues();
-		values.put(SessionRegistro.COLUMN_NAME_ACTIVIDAD,"correr");
-		values.put(SessionRegistro.COLUMN_NAME_COMENTARIOS,"flojito");
-		values.put(SessionRegistro.COLUMN_NAME_DISTANCIA, "12km");
-		values.put(SessionRegistro.COLUMN_NAME_FECHA,  "01-11-2013");
-		values.put(SessionRegistro.COLUMN_NAME_TIEMPO, "01:05:54");
-		values.put(SessionRegistro.COLUMN_NAME_VELOCIDAD, "8km/h");
-    	insertSession(values);
+		
+		values.put(SesionRegistro.COLUMN_NAME_ACTIVIDAD,"Ciclismo");
+		values.put(SesionRegistro.COLUMN_NAME_COMENTARIOS,"A Palermo ida y vuelta");
+		values.put(SesionRegistro.COLUMN_NAME_DISTANCIA, "32km");
+		values.put(SesionRegistro.COLUMN_NAME_FECHA,  "13-08-2013");
+		values.put(SesionRegistro.COLUMN_NAME_TIEMPO, "01:29:54");
+		values.put(SesionRegistro.COLUMN_NAME_VELOCIDAD, "25km/h");
+    	insertSesion(values);
     	
-		ContentValues values1 = new ContentValues();
-		values1.put(SessionRegistro.COLUMN_NAME_ACTIVIDAD,"caminata");
-		values1.put(SessionRegistro.COLUMN_NAME_COMENTARIOS,"bien");
-		values1.put(SessionRegistro.COLUMN_NAME_DISTANCIA, "12km");
-		values1.put(SessionRegistro.COLUMN_NAME_FECHA,  "30-11-2013");
-		values1.put(SessionRegistro.COLUMN_NAME_TIEMPO, "01:05:54");
-		values1.put(SessionRegistro.COLUMN_NAME_VELOCIDAD, "8km/h");
-		insertSession(values1);
+		values = new ContentValues();
+		values.put(SesionRegistro.COLUMN_NAME_ACTIVIDAD,"Correr");
+		values.put(SesionRegistro.COLUMN_NAME_COMENTARIOS,"Nike 10K");
+		values.put(SesionRegistro.COLUMN_NAME_DISTANCIA, "10km");
+		values.put(SesionRegistro.COLUMN_NAME_FECHA,  "30-11-2013");
+		values.put(SesionRegistro.COLUMN_NAME_TIEMPO, "00:47:32");
+		values.put(SesionRegistro.COLUMN_NAME_VELOCIDAD, "12km/h");
+		insertSesion(values);
 		
-		ContentValues values2 = new ContentValues();
-		values2.put(SessionRegistro.COLUMN_NAME_ACTIVIDAD,"ciclismo");
-		values2.put(SessionRegistro.COLUMN_NAME_COMENTARIOS,"pare a comer una bondiola");
-		values2.put(SessionRegistro.COLUMN_NAME_DISTANCIA, "12km");
-		values2.put(SessionRegistro.COLUMN_NAME_FECHA,  "15-10-2013");
-		values2.put(SessionRegistro.COLUMN_NAME_TIEMPO, "01:05:54");
-		values2.put(SessionRegistro.COLUMN_NAME_VELOCIDAD, "8km/h");
-		insertSession(values2);
-		
-		ContentValues values3 = new ContentValues();
-		values3.put(SessionRegistro.COLUMN_NAME_ACTIVIDAD,"caminata");
-		values3.put(SessionRegistro.COLUMN_NAME_COMENTARIOS,"genial");
-		values3.put(SessionRegistro.COLUMN_NAME_DISTANCIA, "12km");
-		values3.put(SessionRegistro.COLUMN_NAME_FECHA,  "11-04-2013");
-		values3.put(SessionRegistro.COLUMN_NAME_TIEMPO, "01:05:54");
-		values3.put(SessionRegistro.COLUMN_NAME_VELOCIDAD, "8km/h");
-		insertSession(values3);
+		values = new ContentValues();
+		values.put(SesionRegistro.COLUMN_NAME_ACTIVIDAD,"Caminata");
+		values.put(SesionRegistro.COLUMN_NAME_COMENTARIOS,"Parque Centenario");
+		values.put(SesionRegistro.COLUMN_NAME_DISTANCIA, "8km");
+		values.put(SesionRegistro.COLUMN_NAME_FECHA,  "9-10-2013");
+		values.put(SesionRegistro.COLUMN_NAME_TIEMPO, "01:32:23");
+		values.put(SesionRegistro.COLUMN_NAME_VELOCIDAD, "5km/h");
+		insertSesion(values);
     }  
 
-	public void insertSession( ContentValues values ){
+	public void insertSesion(ContentValues values){
 		SQLiteDatabase db = this.getWritableDatabase();
 	
 		db.insert(
-			SessionRegistro.TABLE_NAME,
-			SessionRegistro.COLUMN_NAME_NULLABLE,
+				SesionRegistro.TABLE_NAME,
+				SesionRegistro.COLUMN_NAME_NULLABLE,
 			values);
 		
 		 db.close(); 
 	}
 	
-	public Cursor selectAllSessiones(){
-	    String selectQuery = "SELECT  * FROM " + SessionRegistro.TABLE_NAME;
+	public Cursor selectAllSesiones(){
+	    String selectQuery = "SELECT  * FROM " + SesionRegistro.TABLE_NAME;
 	    
 	    SQLiteDatabase db = this.getWritableDatabase();
 	    Cursor cursor = db.rawQuery(selectQuery, null);
@@ -179,23 +171,23 @@ public class BaseDatosHelper  extends SQLiteOpenHelper {
 	    return cursor;
 	}
 	
-	public void updateSession(String id, ContentValues values){
+	public void updateSesion(String id, ContentValues values){
 	SQLiteDatabase db = this.getReadableDatabase();
 
-	String selection = SessionRegistro.COLUMN_NAME_ID + " LIKE ?";
+	String selection = SesionRegistro.COLUMN_NAME_ID + " LIKE ?";
 	String[] selectionArgs = { id };
 
 	db.update(
-	    SessionContract.SessionRegistro.TABLE_NAME,
+	    Sesion.SesionRegistro.TABLE_NAME,
 	    values,
 	    selection,
 	    selectionArgs);
 	}
 	
-	public void deleteSession( String id ){
+	public void deleteSesion( String id ){
 		SQLiteDatabase db = this.getReadableDatabase();
 
-		String whereClause = SessionRegistro.COLUMN_NAME_ID + "= \"" + id + "\"";
-		db.delete(SessionRegistro.TABLE_NAME, whereClause, null);
+		String whereClause = SesionRegistro.COLUMN_NAME_ID + "= \"" + id + "\"";
+		db.delete(SesionRegistro.TABLE_NAME, whereClause, null);
 	}	
 }
